@@ -1,10 +1,18 @@
 import './matematika.dart' as mtk;
 
 class Kelas {
+  Kelas({
+    required this.kelas
+  });
+  final int kelas;
   List<Siswa> anggota = [];
 
   void tambahSiswa(Siswa siswa) {
-    anggota.add(siswa);
+    if (siswa.kelas != kelas) {
+      return;
+    } else {
+      return anggota.add(siswa);
+    }
   }
 }
 
