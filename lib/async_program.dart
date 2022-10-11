@@ -1,5 +1,5 @@
 Future<void> hello(String name) async {
-  print("Hello $name");
+  print(await helloStr(name));
 }
 
 Future<String> helloStr(String name) async {
