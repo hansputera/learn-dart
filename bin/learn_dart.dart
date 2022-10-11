@@ -1,6 +1,6 @@
 // import 'package:learn_dart/struktur_kelas.dart' as struktur;
 
-import 'package:learn_dart/http_io.dart';
+import 'package:learn_dart/looping.dart';
 
 Future<void> main(List<String> arguments) async {
   // var kelas = struktur.Kelas(kelas: 8);
@@ -10,9 +10,11 @@ Future<void> main(List<String> arguments) async {
 
   // print("Total anggota di kelas ini ${kelas.anggota.length}");
 
-  var document = await postHastebin("Hello World!");
-  if (document != null) {
-    final String raw = await document.getRaw();
-    print(raw);
-  }
+  // var document = await postHastebin("Hello World!");
+  // if (document != null) {
+  //   final String raw = await document.getRaw();
+  //   print(raw);
+  // }
+
+  print(faktorial(3));
 }
