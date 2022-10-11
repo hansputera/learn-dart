@@ -11,7 +11,7 @@ class Document {
   Future<String> getRaw() async {
     var client = io.HttpClient();
     try {
-      io.HttpClientRequest request = await client.get("hastebin.com", 443, "/$key");
+      io.HttpClientRequest request = await client.getUrl(Uri.parse("https://hastebin.com/raw/$key"));
       io.HttpClientResponse response = await request.close();
 
       final String output = await response.transform(utf8.decoder).join();
@@ -31,10 +31,13 @@ class Document {
 Future<Document?> postHastebin(String data) async {
   var client = io.HttpClient();
   try {
-    io.HttpClientRequest request = await client.post("hastebin.com", 443, "/documents");
+    io.HttpClientRequest request = await client.postUrl(Uri.parse("https://hastebin.com/documents"));
     request.write(data);
 
     io.HttpClientResponse response = await request.close();
+    if (response.statusCode != 200) {
+      return null;
+    }
     
     final String output = await response.transform(utf8.decoder).join();
     var document = Document.fromJson(jsonDecode(output));
